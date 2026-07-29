@@ -106,6 +106,10 @@ function MQW:Initialize()
 	AnchorFrame:SetSize(1, 1)
 	QuestWatchFrame:SetMovable(true)
 	QuestWatchFrame:SetClampedToScreen(true)
+	if not QuestWatchFrame.SetBackdrop and BackdropTemplateMixin then
+		Mixin(QuestWatchFrame, BackdropTemplateMixin)
+		QuestWatchFrame:OnBackdropLoaded()
+	end
 	QuestWatchFrame:SetBackdrop({bgFile = "Interface/Tooltips/UI-Tooltip-Background"})
 	QuestWatchFrame:SetBackdropColor(0, 0, 0, 0)
 	QuestWatchFrame:RegisterForDrag("LeftButton")
